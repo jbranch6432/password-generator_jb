@@ -6,14 +6,14 @@ var options = {
   specialChar: ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")"],
 }
 
-// var passwordLength = prompt("Please select password length between 8-128 characters."); 
-//     if (passwordLength < 8) {
-//       prompt("Password length must be at least 8 characters. Please try again.");
-//     } else if (passwordLength > 128) {
-//      prompt("Password length must be less than 129 characters. Please try again.");
-//     } else (passwordLength > 8 && passwordLength < 129);{
-//        console.log(passwordLength);
-//   }
+var passwordLength = prompt("Please select password length between 8-128 characters."); 
+  //   if (passwordLength < 8) {
+  //     prompt("Password length must be at least 8 characters. Please try again.");
+  //   } else if (passwordLength > 128) {
+  //    prompt("Password length must be less than 129 characters. Please try again.");
+  //   } else (passwordLength > 8 && passwordLength < 129);{
+  //      console.log(passwordLength);
+  // }
 
 
     var answer1 = confirm("Would you like to include upper case letters?");
@@ -30,9 +30,11 @@ var options = {
       console.log(randomPassword)
     }
   
-alert(randomPassword);
+//alert(randomPassword);
 
-
+function generatePassword(){
+  console.log("hello");
+}
 
 
 // Get references to the #generate element
@@ -50,4 +52,4 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-console.log(writePassword);
+//console.log(writePassword);

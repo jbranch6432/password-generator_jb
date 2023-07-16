@@ -6,36 +6,15 @@ var options = {
   specialChar: ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")"],
 }
 
-
-
-    var getType = [
-
-      function lowerCase() {
-        return types.lowerCase [Math.floor(Math.random() * types.lowerCase.length)];
-      },
-
-      function upperCase() {
-        return types.upperCase [Math.floor(Math.random() * types.upperCase.length)];
-      },
-
-      function numeric() {
-        return types.numeric [Math.floor(Math.random() * types.numeric.length)];
-      },
-
-      function specialChar() {
-        return types.specialChar [Math.floor(Math.random() * types.specialChar.length)];
-      },
-    ]
-
     function generatePassword(){
       var passwordLength = prompt("Please select password length between 8-128 characters."); 
     if (passwordLength < 8) {
-      prompt("Password length must be at least 8 characters. Please try again.");
+      alert("Password length must be at least 8 characters. Please try again.");
+      return null
     } else if (passwordLength > 128) {
-     prompt("Password length must be less than 129 characters. Please try again.");
-    } else (passwordLength > 8 && passwordLength < 129);{
-       console.log(passwordLength);
-  }
+     alert("Password length must be less than 129 characters. Please try again.");
+     return null
+    } 
 
 
     var isUpperCase = confirm("Would you like to include upper case letters?");
@@ -48,28 +27,37 @@ var options = {
       //if nothing is selected for lower, upper, number, or character then prompt user to select at least one option
       if (!isUpperCase && !isLowerCase && !isNumeric && !isSpecialChar) {
         alert("Please select at least one option!");
-        
-      generatePassword();
+        return null
     }
-        
-      
+    //Create character bank to pull options from to form random password
+             var charBank = []
+             var randomPassword = ''
 
-      if (isUpperCase===true) {
-
+      if (isUpperCase) {
+        charBank = charBank.concat(options.upperCase)
       }
+
+      if (isLowerCase) {
+        charBank = charBank.concat(options.lowerCase)
+      }
+
+      if (isNumeric) {
+        charBank = charBank.concat(options.numeric)
+      }
+
+
+      if (isSpecialChar) {
+        charBank = charBank.concat(options.specialChar)
+      }
+
+
       for (var i = 0; i < passwordLength; i++) {
-        var randomPassword = randomPassword + options[Math.floor(Math.random() * options.length)];
-        console.log(randomPassword)
+        var randomPasswordChar = charBank[Math.floor(Math.random() * charBank.length)];
+         randomPassword += randomPasswordChar
       }
+
+      return randomPassword
     }
-
-    
-
-    
-    
-  
-
-
 
 
 
@@ -88,4 +76,4 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-//console.log(writePassword);
+

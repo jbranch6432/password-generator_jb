@@ -6,35 +6,71 @@ var options = {
   specialChar: ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")"],
 }
 
-var passwordLength = prompt("Please select password length between 8-128 characters."); 
-  //   if (passwordLength < 8) {
-  //     prompt("Password length must be at least 8 characters. Please try again.");
-  //   } else if (passwordLength > 128) {
-  //    prompt("Password length must be less than 129 characters. Please try again.");
-  //   } else (passwordLength > 8 && passwordLength < 129);{
-  //      console.log(passwordLength);
-  // }
 
 
-    var answer1 = confirm("Would you like to include upper case letters?");
-    console.log(answer1);
-    var answer2 = confirm("Would you like to include lower case letters?");
-    console.log(answer2);
-    var answer3 = confirm("Would you like to include numbers?");
-    console.log(answer3);
-    var answer4 = confirm("Would you like to include special characters?");
-    console.log(answer4);
+    var getType = [
 
-    for (var i = 0; i < passwordLength; i++) {
-      var randomPassword = randomPassword + options[Math.floor(Math.random() * options.length)];
-      console.log(randomPassword)
+      function lowerCase() {
+        return types.lowerCase [Math.floor(Math.random() * types.lowerCase.length)];
+      },
+
+      function upperCase() {
+        return types.upperCase [Math.floor(Math.random() * types.upperCase.length)];
+      },
+
+      function numeric() {
+        return types.numeric [Math.floor(Math.random() * types.numeric.length)];
+      },
+
+      function specialChar() {
+        return types.specialChar [Math.floor(Math.random() * types.specialChar.length)];
+      },
+    ]
+
+    function generatePassword(){
+      var passwordLength = prompt("Please select password length between 8-128 characters."); 
+    if (passwordLength < 8) {
+      prompt("Password length must be at least 8 characters. Please try again.");
+    } else if (passwordLength > 128) {
+     prompt("Password length must be less than 129 characters. Please try again.");
+    } else (passwordLength > 8 && passwordLength < 129);{
+       console.log(passwordLength);
+  }
+
+
+    var isUpperCase = confirm("Would you like to include upper case letters?");
+    var isLowerCase = confirm("Would you like to include lower case letters?");
+    var isNumeric = confirm("Would you like to include numbers?");
+    var isSpecialChar = confirm("Would you like to include special characters?");
+
+      console.log(isUpperCase, isLowerCase, isNumeric, isSpecialChar);
+      
+      //if nothing is selected for lower, upper, number, or character then prompt user to select at least one option
+      if (!isUpperCase && !isLowerCase && !isNumeric && !isSpecialChar) {
+        alert("Please select at least one option!");
+        
+      generatePassword();
     }
-  
-//alert(randomPassword);
+        
+      
 
-function generatePassword(){
-  console.log("hello");
-}
+      if (isUpperCase===true) {
+
+      }
+      for (var i = 0; i < passwordLength; i++) {
+        var randomPassword = randomPassword + options[Math.floor(Math.random() * options.length)];
+        console.log(randomPassword)
+      }
+    }
+
+    
+
+    
+    
+  
+
+
+
 
 
 // Get references to the #generate element
